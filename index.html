@@ -171,6 +171,112 @@
             box-shadow: 0 0 30px rgba(0, 212, 255, 0.8);
         }
 
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            z-index: 101;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-color);
+            margin: 5px 0;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px var(--primary-color);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(10px, 10px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Mobile Menu Overlay */
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 99;
+        }
+
+        .menu-overlay.active {
+            display: block;
+        }
+
+        /* Mobile Navigation */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            nav ul {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                gap: 0;
+                background: rgba(5, 8, 19, 0.95);
+                backdrop-filter: blur(15px);
+                border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+                padding: 20px 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                z-index: 99;
+            }
+
+            nav ul.active {
+                max-height: 500px;
+            }
+
+            nav li {
+                padding: 0 20px;
+                border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+            }
+
+            nav li:last-child {
+                border-bottom: none;
+            }
+
+            nav a {
+                display: block;
+                padding: 15px 0;
+                font-size: 13px;
+            }
+
+            nav a::after {
+                display: none;
+            }
+
+            nav a:hover {
+                color: var(--primary-color);
+                text-shadow: 0 0 10px var(--primary-color);
+            }
+
+            nav {
+                padding: 15px 20px;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+        }
+
         /* Hero Section */
         .hero {
             min-height: 100vh;
@@ -952,127 +1058,9 @@
         }
 
         /* Responsive */
-        @media (max-width: 1024px) {
-            .hero-title {
-                font-size: 60px;
-            }
-
-            .section-title {
-                font-size: 36px;
-            }
-
-            .skills-grid {
-                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            }
-
-            .projects-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            }
-
-            nav {
-                padding: 15px 30px;
-            }
-
-            nav ul {
-                gap: 20px;
-            }
-        }
-
         @media (max-width: 768px) {
             .hero-title {
                 font-size: 40px;
-                letter-spacing: 2px;
-            }
-
-            .hero-subtitle {
-                font-size: 18px;
-                height: 24px;
-            }
-
-            .typing-text {
-                border-right: 2px solid var(--primary-color);
-            }
-
-            nav {
-                flex-direction: row;
-                justify-content: space-between;
-                gap: 10px;
-                padding: 15px 20px;
-                flex-wrap: wrap;
-            }
-
-            .logo {
-                font-size: 20px;
-            }
-
-            nav ul {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 15px;
-                justify-content: center;
-                width: 100%;
-                order: 3;
-            }
-
-            nav a {
-                font-size: 12px;
-            }
-
-            .nav-button {
-                padding: 6px 15px;
-                font-size: 11px;
-            }
-
-            .section-title {
-                font-size: 28px;
-                margin-bottom: 40px;
-            }
-
-            .about {
-                padding: 60px 20px;
-            }
-
-            .about-card {
-                padding: 25px;
-                margin-bottom: 25px;
-            }
-
-            .about-text {
-                font-size: 14px;
-            }
-
-            .contact-info {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-
-            .info-item {
-                padding: 12px;
-            }
-
-            .skills {
-                padding: 60px 20px;
-            }
-
-            .skills-grid {
-                grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-                gap: 15px;
-            }
-
-            .skill-tile {
-                padding: 18px;
-            }
-
-            .skill-title {
-                font-size: 12px;
-            }
-
-            .skill-items {
-                font-size: 11px;
-            }
-
-            .experience {
-                padding: 60px 20px;
             }
 
             .timeline::before {
@@ -1082,533 +1070,39 @@
             .timeline-item {
                 text-align: left !important;
                 padding-left: 50px !important;
-                margin-bottom: 40px;
-            }
-
-            .timeline-item:nth-child(odd),
-            .timeline-item:nth-child(even) {
-                text-align: left !important;
-                padding-left: 50px !important;
-                padding-right: 0 !important;
             }
 
             .timeline-dot {
                 left: 0;
-                width: 16px;
-                height: 16px;
-            }
-
-            .timeline-content {
-                padding: 18px;
-            }
-
-            .timeline-title {
-                font-size: 15px;
-            }
-
-            .timeline-company {
-                font-size: 12px;
-            }
-
-            .timeline-date {
-                font-size: 11px;
-            }
-
-            .timeline-description {
-                font-size: 12px;
-            }
-
-            .projects {
-                padding: 60px 20px;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .project-card {
-                padding: 20px;
-            }
-
-            .project-title {
-                font-size: 18px;
-            }
-
-            .project-date {
-                font-size: 11px;
-            }
-
-            .project-description {
-                font-size: 13px;
-            }
-
-            .tech-tag {
-                font-size: 10px;
-                padding: 4px 10px;
-            }
-
-            .education {
-                padding: 60px 20px;
-            }
-
-            .cert-grid {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                gap: 15px;
-            }
-
-            .cert-badge {
-                padding: 20px;
-            }
-
-            .cert-icon {
-                font-size: 32px;
-            }
-
-            .cert-title {
-                font-size: 14px;
-            }
-
-            .cert-issuer {
-                font-size: 11px;
-            }
-
-            .contact {
-                padding: 60px 20px;
-            }
-
-            .contact-form {
-                padding: 25px;
-                max-width: 100%;
-            }
-
-            .form-label {
-                font-size: 11px;
-            }
-
-            input[type="text"],
-            input[type="email"],
-            input[type="tel"],
-            textarea {
-                padding: 10px;
-                font-size: 14px;
-            }
-
-            .btn {
-                padding: 10px 25px;
-                font-size: 14px;
-            }
-
-            .resume-container {
-                padding: 60px 20px;
-                margin-top: 60px;
             }
 
             .resume-tabs {
                 flex-direction: column;
-                gap: 15px;
-            }
-
-            .resume-tab {
-                padding: 10px 20px;
-                font-size: 11px;
-                width: 100%;
-            }
-
-            .resume-viewer {
-                padding: 20px;
-                max-height: 600px;
-            }
-
-            .resume-viewer h2 {
-                margin-top: 20px;
-                margin-bottom: 12px;
-                font-size: 16px;
-            }
-
-            .resume-viewer h3 {
-                font-size: 14px;
-                margin-top: 15px;
-                margin-bottom: 8px;
-            }
-
-            .resume-viewer p {
-                font-size: 12px;
-                line-height: 1.5;
-                margin-bottom: 8px;
-            }
-
-            .resume-viewer ul {
-                margin-left: 16px;
-                font-size: 12px;
-                line-height: 1.6;
-            }
-
-            .resume-viewer li {
-                margin-bottom: 6px;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                gap: 12px;
-            }
-
-            .hero-buttons .btn {
-                width: 100%;
-                max-width: 250px;
-            }
-
-            footer {
-                padding: 25px 20px;
-            }
-
-            .social-icon {
-                width: 35px;
-                height: 35px;
-                font-size: 16px;
-            }
-
-            .footer-text {
-                font-size: 11px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero {
-                min-height: 80vh;
-                padding: 20px 15px;
-                margin-top: 80px;
-            }
-
-            .hero-title {
-                font-size: 32px;
-                letter-spacing: 1px;
-                margin-bottom: 15px;
-            }
-
-            .hero-subtitle {
-                font-size: 16px;
-                height: 22px;
-            }
-
-            nav {
-                padding: 12px 15px;
-                flex-direction: row;
-                justify-content: space-between;
-            }
-
-            .logo {
-                font-size: 18px;
-            }
-
-            nav ul {
-                display: none;
-                position: absolute;
-                top: 60px;
-                left: 0;
-                right: 0;
-                background: rgba(10, 14, 39, 0.95);
-                flex-direction: column;
-                gap: 10px;
-                padding: 15px;
-                z-index: 99;
-            }
-
-            nav ul.active {
-                display: flex;
-            }
-
-            nav a {
-                font-size: 11px;
-            }
-
-            .nav-button {
-                padding: 5px 12px;
-                font-size: 10px;
-            }
-
-            .section-title {
-                font-size: 24px;
-                margin-bottom: 30px;
-                letter-spacing: 1px;
-            }
-
-            .about {
-                padding: 40px 15px;
-            }
-
-            .about-card {
-                padding: 18px;
-            }
-
-            .about-text {
-                font-size: 13px;
-                line-height: 1.6;
-                margin-bottom: 20px;
-            }
-
-            .info-item {
-                padding: 10px;
-                border-left: 2px solid var(--primary-color);
-            }
-
-            .info-label {
-                font-size: 10px;
-            }
-
-            .info-value {
-                font-size: 12px;
-            }
-
-            .skills {
-                padding: 40px 15px;
             }
 
             .skills-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             }
 
-            .skill-tile {
-                padding: 15px;
-                border-radius: 8px;
+            .hero {
+                margin-top: 80px;
             }
 
-            .skill-title {
-                font-size: 11px;
-                margin-bottom: 8px;
+            .about, .skills, .experience, .projects, .education, .contact {
+                padding: 60px 20px;
             }
 
-            .skill-items {
-                font-size: 10px;
-                line-height: 1.4;
-            }
-
-            .experience {
-                padding: 40px 15px;
-            }
-
-            .timeline::before {
-                left: 8px;
-                width: 1px;
-            }
-
-            .timeline-item {
-                padding-left: 40px;
-                margin-bottom: 30px;
-            }
-
-            .timeline-dot {
-                left: -4px;
-                width: 14px;
-                height: 14px;
-            }
-
-            .timeline-content {
-                padding: 15px;
-                border-radius: 8px;
-            }
-
-            .timeline-title {
-                font-size: 13px;
-                margin-bottom: 3px;
-            }
-
-            .timeline-company {
-                font-size: 11px;
-                margin-bottom: 3px;
-            }
-
-            .timeline-date {
-                font-size: 10px;
-                margin-bottom: 10px;
-            }
-
-            .timeline-description {
-                font-size: 11px;
-                line-height: 1.5;
-            }
-
-            .projects {
-                padding: 40px 15px;
+            .section-title {
+                font-size: 32px;
+                margin-bottom: 40px;
             }
 
             .projects-grid {
                 grid-template-columns: 1fr;
-                gap: 15px;
             }
 
-            .project-card {
-                padding: 18px;
-                border-radius: 10px;
-            }
-
-            .project-title {
-                font-size: 16px;
-                margin-bottom: 8px;
-            }
-
-            .project-date {
-                font-size: 10px;
-                margin-bottom: 12px;
-            }
-
-            .project-description {
-                font-size: 12px;
-                line-height: 1.5;
-                margin-bottom: 15px;
-            }
-
-            .tech-tag {
-                font-size: 9px;
-                padding: 3px 8px;
-            }
-
-            .education {
-                padding: 40px 15px;
-            }
-
-            .cert-grid {
+            .contact-info {
                 grid-template-columns: 1fr;
-                gap: 12px;
-            }
-
-            .cert-badge {
-                padding: 18px;
-                border-radius: 15px;
-            }
-
-            .cert-icon {
-                font-size: 28px;
-                margin-bottom: 12px;
-            }
-
-            .cert-title {
-                font-size: 13px;
-            }
-
-            .cert-issuer {
-                font-size: 10px;
-            }
-
-            .contact {
-                padding: 40px 15px;
-            }
-
-            .contact-form {
-                padding: 20px;
-                border-radius: 10px;
-            }
-
-            .form-group {
-                margin-bottom: 18px;
-            }
-
-            .form-label {
-                font-size: 10px;
-                margin-bottom: 8px;
-            }
-
-            input[type="text"],
-            input[type="email"],
-            input[type="tel"],
-            textarea {
-                padding: 9px;
-                font-size: 13px;
-                border-radius: 4px;
-            }
-
-            .btn {
-                padding: 9px 20px;
-                font-size: 13px;
-                border-radius: 4px;
-            }
-
-            .resume-container {
-                padding: 40px 15px;
-                margin-top: 40px;
-            }
-
-            .resume-tabs {
-                flex-direction: column;
-                gap: 12px;
-                margin-bottom: 25px;
-            }
-
-            .resume-tab {
-                padding: 9px 15px;
-                font-size: 10px;
-                width: 100%;
-                border-radius: 4px;
-            }
-
-            .resume-viewer {
-                padding: 18px;
-                max-height: 500px;
-                border-radius: 10px;
-            }
-
-            .resume-viewer h2 {
-                margin-top: 18px;
-                margin-bottom: 10px;
-                font-size: 14px;
-            }
-
-            .resume-viewer h2:first-child {
-                margin-top: 0;
-            }
-
-            .resume-viewer h3 {
-                font-size: 12px;
-                margin-top: 12px;
-                margin-bottom: 8px;
-            }
-
-            .resume-viewer p {
-                font-size: 11px;
-                line-height: 1.4;
-                margin-bottom: 6px;
-            }
-
-            .resume-viewer ul {
-                margin-left: 15px;
-                font-size: 11px;
-                line-height: 1.5;
-            }
-
-            .resume-viewer li {
-                margin-bottom: 5px;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                gap: 10px;
-                margin-top: 25px;
-            }
-
-            .hero-buttons .btn {
-                width: 100%;
-                max-width: none;
-            }
-
-            footer {
-                padding: 20px 15px;
-            }
-
-            .social-links {
-                gap: 15px;
-                margin-bottom: 15px;
-            }
-
-            .social-icon {
-                width: 32px;
-                height: 32px;
-                font-size: 14px;
-            }
-
-            .footer-text {
-                font-size: 10px;
-                line-height: 1.4;
             }
         }
 
@@ -1641,7 +1135,7 @@
     <!-- Navigation -->
     <nav>
         <div class="logo">A</div>
-        <ul>
+        <ul id="navMenu">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#skills">Skills</a></li>
@@ -1651,7 +1145,13 @@
             <li><a href="#contact">Contact</a></li>
             <li><a href="#resume">Resume</a></li>
         </ul>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </nav>
+    <div class="menu-overlay" id="menuOverlay"></div>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
@@ -1802,31 +1302,6 @@
                 </div>
             </div>
 
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <div class="timeline-title">Symposium Coordinator</div>
-                    <div class="timeline-company">Sri Sairam Engineering College, Chennai</div>
-                    <div class="timeline-date">2022 & 2023</div>
-                    <div class="timeline-description">
-                        Led planning and execution of symposiums managing 300+ participants. 
-                        Handled logistics, budgeting, guest coordination, and promotional campaigns.
-                    </div>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <div class="timeline-title">Student Secretary</div>
-                    <div class="timeline-company">Sri Sairam Engineering College, Chennai</div>
-                    <div class="timeline-date">2023</div>
-                    <div class="timeline-description">
-                        Managed student administrative tasks and acted as liaison with college management. 
-                        Led major event planning, increasing student participation by 40%. Supervised 20-member team.
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -2256,6 +1731,32 @@
     </footer>
 
     <script>
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const navLinks = navMenu.querySelectorAll('a');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+        });
+
+        menuOverlay.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                menuOverlay.classList.remove('active');
+            });
+        });
+
         // Typing Animation
         const roles = [
             'AWS DevOps Engineer',
