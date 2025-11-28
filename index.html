@@ -210,11 +210,13 @@
             right: 0;
             bottom: 0;
             background: rgba(0, 0, 0, 0.7);
-            z-index: 99;
+            z-index: 98;
+            pointer-events: none;
         }
 
         .menu-overlay.active {
             display: block;
+            pointer-events: auto;
         }
 
         /* Mobile Navigation */
@@ -238,10 +240,12 @@
                 overflow: hidden;
                 transition: max-height 0.3s ease;
                 z-index: 99;
+                pointer-events: none;
             }
 
             nav ul.active {
                 max-height: 500px;
+                pointer-events: auto;
             }
 
             nav li {
